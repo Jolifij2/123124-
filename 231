@@ -1,81 +1,60 @@
-﻿#include <iostream>
-
+#include <iostream>
 using namespace std;
 
-// Вспомогательная функция для вывода массива
-void printArray(int* arr, int size) {
-    for (int i = 0; i < size; ++i) {
-        cout << *(arr + i) << " ";
+void printArray(int* mas2, int lol) {
+    for (int i = 0; i < lol; ++i) {
+        cout << *(mas2 + i) << " ";
     }
     cout << endl;
 }
 
-// Задание 1
-void copyArray(int* source, int* destination, int size) {
-    for (int i = 0; i < size; ++i) {
-        *(destination + i) = *(source + i);
+void lolkek(int* mas1, int* mas2, int lol) {
+    for (int i = 0;i < lol;i++) {
+        *(mas2 + i) = *(mas1 + i);
     }
 }
 
-int main() {
-    setlocale(LC_ALL, "ru");
-    int sourceArray[] = { 1, 2, 3, 4, 5 };
-    int size = sizeof(sourceArray) / sizeof(sourceArray[0]);
-    int destinationArray[size];
 
-    printArray(sourceArray, size);
 
-    copyArray(sourceArray, destinationArray, size);
-    cout << "Скопированный массив: ";
-    printArray(destinationArray, size);
-    return 0;
+int main()
+{
+    const int lol = 10, kek = 10;
+    int mas1[lol] = { 1,2,3,4,5,6,7,8,9 };
+    int mas2[kek];
+    lolkek(mas1, mas2, lol);
+    printArray(mas2, kek);
+}
+//задание 2.
+#include <iostream>
+using namespace std;
+
+void printArray(int* mas1, int lol) {
+    for (int i = 0; i < lol; ++i) {
+        cout << *(mas1 + i) << " ";
+    }
+    cout << endl;
 }
 
-// Задание 2
-void reverseArray(int* arr, int size) {
-    int* left = arr;
-    int* right = arr + size - 1;
-
-    while (left < right) {
-        int temp = *left;
-        *left = *right;
-        *right = temp;
-        left++;
-        right--;
+void lolkek2(int* mas1,int lol) {
+    int* a = mas1;
+    int* b = mas1 + lol - 1;
+    while (a < b) {
+        int ceburek = *a;
+        *a = *b;
+        *b = ceburek;
+        a++;
+        b--;
     }
 }
-    
-int main() {
-    int arrayToReverse[] = { 1, 2, 3, 4, 5 };
-    int sizeReverse = sizeof(arrayToReverse) / sizeof(arrayToReverse[0]);
-   
-printArray(arrayToReverse, sizeReverse);
 
-    reverseArray(arrayToReverse, sizeReverse);
 
-    cout << "Массив в обратном порядке: ";
-    printArray(arrayToReverse, sizeReverse);
-    return 0;
+
+int main()
+{
+    const int lol = 10, kek = 10;
+    int mas1[lol] = { 1,2,3,4,5,6,7,8,9 };
+    int mas2[kek];
+    lolkek2(mas1,lol);
+    printArray(mas1, kek);
 }
 
-// Задание 3
-void copyReverseArray(int* source, int* destination, int size) {
-    int* source_end = source + size - 1;
-    for (int i = 0; i < size; ++i)
-    {
-        *(destination + i) = *(source_end - i);
-    }
-}
-   
-int main() {
-    int sourceArrayToReverseCopy[] = { 1, 2, 3, 4, 5 };
-    int sizeToReverseCopy = sizeof(sourceArrayToReverseCopy) / sizeof(sourceArrayToReverseCopy[0]);
-    int destinationArrayToReverseCopy[sizeToReverseCopy];
-
-    printArray(sourceArrayToReverseCopy, sizeToReverseCopy);
-    copyReverseArray(sourceArrayToReverseCopy, destinationArrayToReverseCopy, sizeToReverseCopy);
-    cout << "Скопированный в обратном порядке массив: ";
-    printArray(destinationArrayToReverseCopy, sizeToReverseCopy);
-
-    return 0;
-}
